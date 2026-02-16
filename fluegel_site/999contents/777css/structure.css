@@ -92,7 +92,7 @@ body {
 /* スマホ版の調整 */
 @media screen and (max-width: 500px) {
   .site-title {
-    font-size: 18px; /* スマホでは少し小さく */
+    font-size: 16px; /* スマホでは少し小さく */
   }
   .site-logo {
     width: 60px;
@@ -512,4 +512,5 @@ ul.ddmenu2 ul a {
   .map-container iframe {
     height: 300px;       /* スマホは少し低く */
   }
+
 }
