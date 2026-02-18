@@ -155,9 +155,9 @@
       // 改行で分割（空白行を除外）
       const lines = fullText.split(/\r?\n/).filter(line => line.trim() !== "");
 
-      if (lines.length >= 2) {
-        // 最終行：署名
-        document.getElementById(signatureId).innerText = lines[lines.length - 1];
+      if (lines.length >= 3) {
+          const signatureLines = lines.slice(lines.length - 2);
+          document.getElementById(signatureId).innerHTML = signatureLines.join('<br>');
         
         // 本文（改行を保持するために innerHTML + <br> 変換を使うと綺麗です）
         const bodyLines = lines.slice(1, lines.length - 1);
@@ -199,4 +199,5 @@
 </script>
 
 </body> 
+
 </html>
