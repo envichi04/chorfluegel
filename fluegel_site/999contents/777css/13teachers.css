@@ -1,0 +1,54 @@
+.teacher-item {
+  margin-bottom: 70px;
+  clear: both;
+}
+
+/* 肩書き、名前、英名を包む縦方向のボックス */
+.teacher-header {
+  border-left: 5px solid #25abc1;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+/* 肩書き（黒字・小さめ） */
+.teacher-title {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* 名前と英名の横並び用 */
+.name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.teacher-name-jp {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  line-height: 1.2;
+}
+
+.teacher-name-en {
+  font-size: 15px;
+  color: #888;
+  font-family: Arial, sans-serif;
+}
+
+.teacher-photo {
+  float: right;
+  width: 160px; /* 少し大きめにしても良いですね */
+  height: auto;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.teacher-text {
+  line-height: 1.8;
+  color: #444;
+}
