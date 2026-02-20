@@ -368,7 +368,7 @@ ul.ddmenu2 ul a {
 /* スマホでは少し文字サイズを小さくして、1行に収まりやすくする */
 @media screen and (max-width: 500px) {
   .sub-heading {
-    font-size: 14px;
+    font-size: 20px;
     padding: 0 10px;
   }
 }
@@ -592,4 +592,5 @@ ul.ddmenu2 ul a {
     height: 300px;
     /* スマホは少し低く */
   }
+
 }
