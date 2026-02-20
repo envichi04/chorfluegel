@@ -1,0 +1,595 @@
+@charset "UTF-8";
+
+
+/* pタグの上下の余白を消す専用クラス */
+.no-margin {
+  margin: 0 !important;
+  line-height: 1.5;
+}
+
+/* 全てのリンクに対して、訪問後も色を変えない設定 */
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;  /* 下線を消したい場合はこれ */
+}
+
+/* ホバーした時（マウスを乗せた時）だけ色を変える設定 */
+a:hover {
+  color: #25abc1;
+  text-decoration: underline; /* ホバー時だけ下線を出す */
+  transition: 0.3s; /*移行時間*/
+}
+
+/* ===== 1. リセット & 基本設定 ===== */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.inner-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== 2. ヘッダー（全幅） ===== */
+.full-width-header {
+  background-color: #25abc1;
+  color: white;
+  padding: 15px 0 25px 0;
+}
+
+.top-links {
+  text-align: right;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.top-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  opacity: 0.9;
+}
+
+.top-links a:hover {
+  text-decoration: underline;
+}
+
+/* タイトルのリンク設定 */
+.title-link-wrapper {
+  text-decoration: none;  /* リンクの下線を消す */
+  color: inherit;  /* 文字色を親（white）から引き継ぐ */
+  display: block;
+}
+
+.title-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: opacity 0.3s;
+}
+
+.title-area:hover {
+  opacity: 0.8;
+}
+
+.site-logo {
+  width: 80px;
+  height: auto;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+}
+
+/* スマホ版の調整 */
+@media screen and (max-width: 500px) {
+  .site-title { font-size: 16px; }
+  .site-logo { width: 60px }
+}
+
+/* ===== 3. ナビゲーション（上部固定） ===== */
+.full-width-nav {
+  background-color: #1e8fa3;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ul.ddmenu2 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+ul.ddmenu2>li {
+  position: relative;
+  flex: 1 1 auto;
+}
+
+ul.ddmenu2>li>a {
+  display: block;
+  line-height: 48px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s;
+  white-space: nowrap;
+  padding: 0 1.2vw;
+  font-size: clamp(12px, 1.3vw, 15px);
+}
+
+ul.ddmenu2>li:hover>a {
+  background: #166d7c;
+}
+
+.menu-trigger {
+  display: none;
+}
+
+/* ===== 4. サブメニュー（PC版） ===== */
+ul.ddmenu2 ul {
+  display: none;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: #e9f7fa;
+  min-width: 100%;
+  width: max-content;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #25abc1;
+}
+
+ul.ddmenu2 ul a {
+  display: block;
+  color: #25abc1;
+  text-align: center;
+  line-height: 48px;
+  padding: 0 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #d4eef3;
+  transition: background 0.2s;
+}
+
+@media (hover: hover) {
+  ul.ddmenu2 li:hover>ul {
+    display: block;
+  }
+}
+
+/* ===== 5. スマホ版（500px以下） ===== */
+@media screen and (max-width: 500px) {
+  /* スマホ版も高さを48pxに固定 */
+  .full-width-nav .inner-container {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .menu-trigger {
+    display: block;
+    position: relative;
+    width: 26px;
+    /* 少し小さめに調整 */
+    height: 18px;
+    /* 高さに収まるように調整 */
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* ハンバーガーアイコンの線 */
+  .menu-trigger span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s;
+  }
+
+  .menu-trigger span:nth-child(1) {top: 0;}
+  .menu-trigger span:nth-child(2) {top: 8px;}
+  .menu-trigger span:nth-child(3) {bottom: 0;}
+
+  /* ×印へのアニメーション */
+  .menu-trigger.active span:nth-child(1) {transform: translateY(8px) rotate(-45deg);}
+  .menu-trigger.active span:nth-child(2) {opacity: 0;}
+  .menu-trigger.active span:nth-child(3) {transform: translateY(-8px) rotate(45deg);}
+
+  /* スマホメニュー本体 */
+  ul.ddmenu2 {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 48px;
+    /* バーのすぐ下に表示 */
+    left: 0;
+    width: 100%;
+    background-color: #1e8fa3;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;    /* 画面からはみ出さないように */
+  }
+
+  ul.ddmenu2.open {display: flex;}
+
+
+  /* スマホ版メニュー項目：文字とボタンを分離 */
+  ul.ddmenu2 > li {
+    display: flex;
+    flex-wrap: wrap; /* サブメニューを下段に回す */
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  ul.ddmenu2 > li > a {
+    flex: 1; /* 左側の文字部分が広がる */
+    text-align: left;
+    padding: 0 20px;
+    line-height: 50px;
+    font-size: 15px;
+  }
+
+  /* 右側の開閉専用ボタン（三角） */
+  .submenu-toggle {
+    width: 55px; /* タップしやすい大きさ */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.08);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+  }
+
+  .submenu-toggle::before {
+    content: '▼';
+    color: white;
+    font-size: 10px;
+    transition: transform 0.3s;
+  }
+
+  /* サブメニューが開いている時の三角の回転 */
+  .submenu-toggle.active::before {
+    transform: rotate(180deg);
+  }
+
+  /* スマホ用サブメニュー（最初は隠す） */
+  ul.ddmenu2 ul {
+    display: none;  /* JSで.showを付けて開閉する */
+    position: static;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+    border: none;
+    order: 3; /* aとspanの後に配置 いる？*/
+  }
+
+
+  ul.ddmenu2 ul.show {
+    display: block;
+  }
+
+  ul.ddmenu2 ul a {
+    padding-left: 45px;
+    text-align: left;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ===== 6. パンくずリスト ===== */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  margin: 10px 0 0 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+/* 各階層のスタイル */
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+
+/* 階層の間の「>」の記号 */
+.breadcrumb-item+.breadcrumb-item::before {
+  content: ">";
+  padding: 0 10px;
+  color: #ccc;
+  font-family: sans-serif;
+}
+
+/* リンクの色 */
+.breadcrumb-item a {
+  color: #25abc1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+/* 今いるページ（一番右）の文字を少し薄く、クリック不可にする */
+.breadcrumb-item.active {
+  color: #999;
+  pointer-events: none;
+}
+
+/* ===== 7. コンテンツエリア ===== */
+.content-body {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+.main-heading {
+  border-left: 5px solid #25abc1;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.sub-heading {
+  text-align: center;
+  /* 左右中央寄せ */
+  font-weight: bold;
+  /* 太字 */
+  font-size: 30px;
+  /* フォントサイズ（お好みで調整） */
+  color: #25abc1;
+  /* ヘッダーと同じ水色 */
+  margin: 0px 0;
+  /* 上下の余白 */
+  letter-spacing: 0.1em;
+  /* 文字の間隔を少し広げて読みやすく */
+}
+
+/* スマホでは少し文字サイズを小さくして、1行に収まりやすくする */
+@media screen and (max-width: 500px) {
+  .sub-heading {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
+
+/* 本文エリアの標準テキスト設定 */
+.standard-text {
+  line-height: 1.9;
+  color: #333;
+  text-align: left;
+  /* 左詰め */
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* 大きく1枚表示する画像の設定 */
+.body-image-wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
+  /* 上下の余白 */
+}
+
+.full-width-img {
+  width: 70%;
+  /* コンテナ幅いっぱいに広がる */
+  max-width: 300px;
+  /* 広がりすぎ防止（お好みで） */
+  height: auto;
+  border-radius: 8px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* スマホでは少し文字サイズを小さくして、1行に収まりやすくする */
+@media screen and (max-width: 500px) {
+  .full-width-img {
+    width: 60%;
+  }
+}
+
+/* コンテンツ間の余白 */
+.content-body h2.main-heading {
+  margin-bottom: 25px;
+}
+
+/* セクションごとの塊 */
+.content-section {
+  margin-bottom: 80px;
+  /* セクション間の余白 */
+}
+
+/* 最後のセクションの下は余白を消す */
+.content-section:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 8. フッター ===== */
+.full-width-footer {
+  background-color: #25abc1;
+  color: white;
+  padding: 40px 0;
+  /* 少し余裕を持たせる */
+  margin-top: 10px;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 全体を中央寄せ */
+  gap: 20px;
+  /* SNSリンクとコピーライトの間隔 */
+}
+
+/* SNSリンクを1行に並べる */
+.sns-footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* スマホで入り切らない時に折り返す */
+  gap: 25px;
+  /* SNS同士の横の間隔 */
+}
+
+.sns-item {
+  display: flex;
+  align-items: center;
+  /* アイコンと文字を垂直中央に */
+  gap: 8px;
+  /* アイコンと文字の間隔 */
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.sns-item:hover {
+  opacity: 0.7;
+}
+
+.sns-icon {
+  width: 40px;
+  /* アイコンのサイズ */
+  height: 40px;
+  object-fit: contain;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 500px) {
+  .full-width-footer {
+    padding: 30px 0;
+  }
+
+  .sns-footer-links {
+    gap: 15px;
+    /* スマホでは間隔を少し狭める */
+  }
+
+  .sns-item {
+    font-size: 10px;
+  }
+
+  .sns-icon {
+    width: 20px;
+    /* アイコンのサイズ */
+    height: 20px;
+    object-fit: contain;
+  }
+}
+
+
+/*  ===== 999その他便利系 ===== */
+/*  ===== 署名 =====*/
+.sign {
+  text-align: right;
+}
+
+/* ===== ボーダーライン ===== */
+.border-line {
+  border: none;
+  border-top: 2px solid #25abc1;
+  margin: 40px 0;
+  width: 100%;
+}
+
+/* ===== リンクリスト ===== */
+/* 親要素（文字サイズや位置など） */
+.list-link {
+  text-align: left;
+  margin: 30px 0;
+  /* 上下に少し余白を足すと綺麗です */
+}
+
+/* リンクそのものの装飾をリセット */
+.list-link a {
+  font-size: 24px;
+  font-weight: bold;
+  /* 20pxではなくboldなどのキーワードを使います */
+  color: #25abc1;
+  /* 常にこの水色に固定 */
+  text-decoration: none;
+  /* 下線を消す */
+  display: inline-block;
+  /* 押しやすくするための設定 */
+  padding: 5px 0;
+  /* 行間を少し広げる */
+}
+
+/* マウスを乗せても色が変わらないように固定（お好みで） */
+.list-link a:hover {
+  opacity: 0.7;
+  /* 70%の濃さにする（少し透ける） */
+}
+
+.list-link a:visited {
+  color: #25abc1;
+  /* 訪問済みでもホバーしても水色のまま */
+  text-decoration: none;
+  /* ホバーしても線を出さない */
+}
+
+/* ===== GoogleMap埋め込み（センター配置・サイズ調整） ===== */
+.map-container {
+  width: 80%;
+  /* 全体の80%の大きさに縮小 */
+  max-width: 800px;
+  /* 大きくなりすぎないように制限 */
+  margin: 0px auto;
+  /* 上下40pxの余白を作り、左右autoで中央寄せ */
+  border: 2px solid #25abc1;
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 0;
+  /* 下の変な隙間を消す */
+}
+
+.map-container iframe {
+  width: 100% !important;
+  /* 親（80%の枠）に対して100% */
+  height: 450px;
+  /* 高さを直接指定（お好みで調整してください） */
+  border: 0;
+}
+
+/* スマホでは画面いっぱいに表示する */
+@media screen and (max-width: 600px) {
+  .map-container {
+    width: 95%;
+    /* スマホは少し大きく */
+    margin: 20px auto;
+  }
+
+  .map-container iframe {
+    height: 300px;
+    /* スマホは少し低く */
+  }
+}

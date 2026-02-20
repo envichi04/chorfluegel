@@ -1,0 +1,42 @@
+お問い合わせ・演奏のご依頼
+メールアドレス：<a href="mailto:chorfluegel@gmail.com">chorfluegel@gmail.com</a>
+===
+情宣・チラシ挟み込みのお問い合わせ
+渉外用アドレス：<a href="mailto:chorfluegel.liaison@gmail.com">chorfluegel.liaison@gmail.com</a>
+===
+入団・新歓のお問い合わせ
+相談用アドレス：<a href="mailto:chorfluegel@gmail.com">chorfluegel@gmail.com</a>
+===
+各種SNS
+
+<style>
+  /* ホバー時の色設定 */
+  .sns-link-custom {
+    color: black !important;
+    transition: color 0.3s;
+  }
+  .sns-link-custom:hover {
+    color: #25abc1 !important; 
+  }
+
+</style>
+
+<a href="https://twitter.com/chorfluegel" target="_blank" rel="noopener noreferrer"style="font-size: 20px; text-decoration: underline; display: inline-flex; align-items: center; gap: 8px; vertical-align: middle;">
+  <img src="../../999contents/00common_images/x-icon.png" alt="X" style="width: 40px; height: 40px; display: block; margin-bottom:20px;">  
+  <span>公式Twitter</span>
+</a>
+
+<a href="https://twitter.com/fluegel2026" target="_blank" rel="noopener noreferrer"style="font-size: 20px;  text-decoration: underline; display: inline-flex; align-items: center; gap: 8px; vertical-align: middle;">
+  <img src="../../999contents/00common_images/x-icon.png" alt="X" style="width: 40px; height: 40px; display: block; margin-bottom:20px;">  
+  <span>新歓用Twitter</span>
+</a>
+
+<a href="https://instagram.com/chorfluegel" target="_blank" rel="noopener noreferrer"style="font-size: 20px; text-decoration: underline; display: inline-flex; align-items: center; gap: 8px; vertical-align: middle;">
+  <img src="../../999contents/00common_images/insta-icon.png" alt="X" style="width: 40px; height: 40px; display: block; margin-bottom:20px;">  
+  <span>公式/新歓用Instagram</span>
+</a>
+        
+<a href="https://www.youtube.com/channel/UCwWPPTG2KxGf5YgngI1UkEg" target="_blank" rel="noopener noreferrer"style="font-size: 20px; text-decoration: underline; display: inline-flex; align-items: center; gap: 8px; vertical-align: middle;">
+  <img src="../../999contents/00common_images/youtube-icon.png" alt="X" style="width: 40px; height: 40px; display: block; margin-bottom:20px;">  
+  <span>YouTube</span>
+</a>
