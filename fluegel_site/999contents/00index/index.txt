@@ -1,0 +1,57 @@
+早稲田大学コールフリューゲル
+<div style="font-size:18px; text-align:center;">
+こちらは早稲田大学コール・フリューゲル公式HPです。
+早稲田大学を拠点に、現在は20名ほどで活動しているインターカレッジ男声合唱サークルです。
+<span style="font-weight:bold;">"ここでしかできない音楽"</span>を追求し、日々活動しています。
+</div>
+===
+最新情報
+
+// --- 年間スケジュール（1行目：タイトル / 以降4行1セット：日付・内容等） ---
+        async function loadHistory() {
+            const container = document.getElementById('history-timeline');
+            const titleElement = document.getElementById('schedule-title'); // タイトル用の要素
+            if (!container || !titleElement) return;
+
+            try {
+                const response = await fetch(basePath + 'schedule.txt');
+                if (!response.ok) throw new Error('Schedule TXT not found');
+
+                const text = await response.text();
+                // 改行で分割し、空行を除去
+                const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l !== "");
+
+                if (lines.length === 0) return;
+
+                // --- 1. タイトルの設定（テキストの1行目を使用） ---
+                titleElement.innerText = lines[0];
+
+                // --- 2. スケジュール本体の設定（2行目から開始） ---
+                let htmlContent = '';
+                // i = 1 からスタートし、4行ずつループ
+                for (let i = 1; i < lines.length; i += 4) {
+                    const date = lines[i] || "";
+                    const title = lines[i + 1] || "";
+                    const location = lines[i + 2] || "";
+                    const body = lines[i + 3] || "";
+
+                    htmlContent += `
+                        <div class="timeline-item">
+                            <div class="timeline-left">
+                                <span class="timeline-date">${date}</span>
+                            </div>
+                            <div class="timeline-right">
+                                <h4 class="timeline-title">${title}</h4>
+                                <div class="timeline-location">📍 ${location}</div>
+                                <p class="timeline-text">${body}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                container.innerHTML = htmlContent;
+            } catch (error) {
+                console.error('Timeline Error:', error);
+                titleElement.innerText = "年間行事"; // エラー時のフォールバック
+                container.innerHTML = "<p>スケジュールの読み込みに失敗しました。</p>";
+            }
+        }
